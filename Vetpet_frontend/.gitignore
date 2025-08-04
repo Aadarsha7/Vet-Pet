@@ -1,6 +1,7 @@
 venv/
 
 
+.gitignore/
 
 node_modules/
 
