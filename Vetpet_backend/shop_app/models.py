@@ -12,7 +12,8 @@ class Product(models.Model):
 
     name = models.CharField(max_length=100)
     slug = models.SlugField(blank=True, null=True, unique=True)  # add unique=True to enforce uniqueness
-    image = models.ImageField(upload_to="img/")
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
+
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     category = models.CharField(max_length=15, choices=CATEGORY, blank=True, null=True)
