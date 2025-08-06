@@ -1,15 +1,18 @@
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingCart } from "react-icons/fa";
 
+import { Link } from "react-router-dom";
+import styles from "./NavBar.module.css";
 
-import {Link} from 'react-router-dom'
-import styles from "./NavBar.module.css"
-
-import NavBarLink  from './NavBarLink'
+import NavBarLink from "./NavBarLink";
 const NavBar = () => {
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 ${styles.stickyNavbar}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 ${styles.stickyNavbar}`}
+    >
       <div className="container">
-        <Link className="navbar-brand fw-bold text-uppercase" to="/">SHOPPIT</Link>
+        <Link className="navbar-brand fw-bold text-uppercase" to="/">
+          SHOPPIT
+        </Link>
 
         <button
           className="navbar-toggler"
@@ -34,19 +37,18 @@ const NavBar = () => {
             <span
               className="position-absolute top-0 start-100 translate-middle badge rounded-pill"
               style={{
-                fontSize: '0.85rem',
-                padding: '0.5em 0.65em',
-                backgroundColor: '#6050DC',
+                fontSize: "0.85rem",
+                padding: "0.5em 0.65em",
+                backgroundColor: "#6050DC",
               }}
             >
-              {/* Optional: put cart count here */}
-              0
+              {/* Optional: put cart count here */}0
             </span>
           </Link>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
 export default NavBar;
