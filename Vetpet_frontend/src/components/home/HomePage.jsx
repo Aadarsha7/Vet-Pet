@@ -4,13 +4,20 @@ import CardContainer from "./CardContainer";
 import api from "../../api";
 import PlaceHolderContainer from "../ui/PlaceHolderContainer";
 import Error from "../ui/Error";
+import { randomValue } from "../../GenerateCardCode";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  useEffect(function () {
+  useEffect(() => {
+    if (localStorage.getItem("cart_code") == null) {
+      localStorage.setItem("cart_code", randomValue);
+    }
+  }, []);
+
+  useEffect(() => {
     setLoading(true);
     api
       .get("/products")
@@ -30,7 +37,6 @@ const HomePage = () => {
   return (
     <>
       <Header />
-
       {error && <Error error={error} />}
       {loading && <PlaceHolderContainer />}
       {!loading && !error && <CardContainer products={products} />}
