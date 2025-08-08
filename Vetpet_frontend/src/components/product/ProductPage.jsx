@@ -10,44 +10,41 @@ const ProductPage = () => {
   const [product, setProduct] = useState({});
   const [similarProducts, setSimilarProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const cart_code =localStorage.getItem("cart_code")
 
+  function add_item() {
+    const cart_code = localStorage.getItem("cart_code");
 
-  const newItem = {cart_code: cart_code, product_id:product.id}
-  
-  function add_item(){
-    const cart_code =localStorage.getItem("cart_code")  
-    const newItem = {cart_code: cart_code, product_id:product.id}
-    api.post("add_item/",newItem)
-    .then(res =>{
-      console.log(res.data)
+    // ✅ FIX: Ensure product.id and cart_code are valid
+    if (!cart_code || !product.id) {
+      console.error("Missing cart_code or product ID");
+      return;
+    }
 
-    })
+    const newItem = { cart_code: cart_code, product_id: product.id };
 
-    .catch(err =>{
-      console.log(err.message)
-    })
+    api.post("add_item/", newItem)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err.response?.data || err.message);
+      });
   }
 
-
-
-
-
-  useEffect(function (){
-      setLoading(true);
-      api
-        .get(`product_detail/${slug}`)
-        .then((res) => {
-          setProduct(res.data),
-            setSimilarProducts(res.data.similar_products),
-            setLoading(false);
-        })
-        .catch((err) => {
-          setLoading(false), console.log(err.message);
-        });
-    },
-    [slug]
-  );
+  useEffect(function () {
+    setLoading(true);
+    api
+      .get(`product_detail/${slug}`)
+      .then((res) => {
+        setProduct(res.data);
+        setSimilarProducts(res.data.similar_products);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err.message);
+      });
+  }, [slug]);
 
   if (loading) return <ProductPagePlaceHolder />;
   return (
