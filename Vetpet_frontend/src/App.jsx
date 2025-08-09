@@ -3,11 +3,20 @@ import MainLayout from "./layout/MainLayout";
 import HomePage from "./components/home/HomePage";
 import NotFoundPage from "./components/ui/NotFoundPage";
 import ProductPage from "./components/product/ProductPage";
+import { useEffect, useState } from "react";
+
 const App = () => {
+  const [numCartItems, setNumberCartItems] = useState(0);
+  const cart_code = localStorage.getItem("cart_code");
+
+  useEffect(function () {
+    api.get(``);
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<MainLayout numCartItems={numCartItems} />}>
           <Route index element={<HomePage />} />
           <Route path="products/:slug" element={<ProductPage />} />
           <Route path="*" element={<NotFoundPage />} />
