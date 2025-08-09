@@ -9,10 +9,6 @@ const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
   const cart_code = localStorage.getItem("cart_code");
 
-  useEffect(function () {
-    api.get(``);
-  }, []);
-
   return (
     <BrowserRouter>
       <Routes>

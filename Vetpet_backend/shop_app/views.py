@@ -41,7 +41,6 @@ def add_item(request):
     except Exception as e:
         return Response({"error":str(e)},status=400)
 
-
 @api_view(['GET'])
 def product_in_cart(request):
     cart_code = request.query_params.get("cart_code")
