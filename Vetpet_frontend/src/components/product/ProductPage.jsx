@@ -10,27 +10,23 @@ const ProductPage = () => {
   const [product, setProduct] = useState({});
   const [similarProducts, setSimilarProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const cart_code = localStorage.getItem("cart_code")
+
+  const newItem = {cart_code:cart_code,product_id:product.id}
+
 
   function add_item() {
-    const cart_code = localStorage.getItem("cart_code");
-
-    // ✅ FIX: Ensure product.id and cart_code are valid
-    if (!cart_code || !product.id) {
-      console.error("Missing cart_code or product ID");
-      return;
-    }
-
     const newItem = { cart_code: cart_code, product_id: product.id };
-
+  
     api.post("add_item/", newItem)
-      .then((res) => {
+      .then(res => {
         console.log(res.data);
       })
-      .catch((err) => {
-        console.error(err.response?.data || err.message);
+      .catch(err => {
+        console.log(err.message);
       });
   }
-
+  
   useEffect(function () {
     setLoading(true);
     api
