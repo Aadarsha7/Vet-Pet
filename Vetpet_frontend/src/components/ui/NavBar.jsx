@@ -11,7 +11,7 @@ const NavBar = ({ numCartItems }) => {
     >
       <div className="container">
         <Link className="navbar-brand fw-bold text-uppercase" to="/">
-          SHOPPIT
+          VETPET
         </Link>
 
         <button

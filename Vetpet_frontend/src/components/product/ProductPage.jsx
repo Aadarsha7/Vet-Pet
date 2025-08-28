@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import api from "../../api";
 import { BASE_URL } from "../../api";
 
-const ProductPage = () => {
+const ProductPage = ({ setNumberCartItems }) => {
   const { slug } = useParams();
   const [product, setProduct] = useState({});
   const [similarProducts, setSimilarProducts] = useState([]);
@@ -36,13 +36,14 @@ const ProductPage = () => {
   const newItem = { cart_code: cart_code, product_id: product.id };
 
   function add_item() {
-    const newItem = { cart_code: cart_code, product_id: product.id };
+    // const newItem = { cart_code: cart_code, product_id: product.id };
 
     api
       .post("add_item/", newItem)
       .then((res) => {
         console.log(res.data);
         setInCart(true);
+        setNumberCartItems((curr) => curr + 1);
       })
       .catch((err) => {
         console.log(err.message);
