@@ -1,27 +1,37 @@
 import React, { useState, useEffect } from "react";
 import CartItem from "./CartItem";
-import CartSummary from "./Cartsummary";
+import CartSummary from "./Cartsummary"; // fixed import case
 import api from "../../api";
 import { Link } from "react-router-dom";
+import Spinner from "../ui/Spinner";
 
 const CartPage = ({ setNumberCartItems }) => {
   const cart_code = localStorage.getItem("cart_code");
   const [cartItem, setCartItem] = useState([]);
   const [cartTotal, setCartTotal] = useState(0.0);
+  const [loading, setLoading] = useState(false);
   const tax = 4.0;
 
-  useEffect(
-    function () {
-      api
-        .get(`get_cart?cart_code=${cart_code}`)
-        .then((res) => {
-          setCartItem(res.data.items);
-          setCartTotal(res.data.sum_total);
-        })
-        .catch((err) => console.log(err.message));
-    },
-    [cart_code]
-  );
+  useEffect(() => {
+    setLoading(true);
+    api
+      .get(`get_cart?cart_code=${cart_code}`)
+      .then((res) => {
+        console.log(res.data);
+        setCartItem(res.data.items);
+        setCartTotal(res.data.sum_total);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setLoading(false);
+      });
+  }, [cart_code]);
+
+  if (loading) {
+    return  <spinner Loading ={loading} />
+    
+  }
 
   if (cartItem.length < 1) {
     return (
@@ -38,7 +48,7 @@ const CartPage = ({ setNumberCartItems }) => {
   return (
     <div
       className="container my-3 py-3"
-      style={{ height: "80vh", overflow: "scroll" }}
+      style={{ height: "80vh", overflowY: "auto" }}
     >
       <h5 className="mb-4">Shopping Cart</h5>
       <div className="row">
@@ -48,8 +58,9 @@ const CartPage = ({ setNumberCartItems }) => {
               key={Item.id}
               item={Item}
               setCartTotal={setCartTotal}
-              cartItems={cartItem}
+              cartitems={cartItem} // make sure CartItem.jsx uses 'cartitems'
               setNumberCartItems={setNumberCartItems}
+              setCartItems={setCartItem}
             />
           ))}
         </div>

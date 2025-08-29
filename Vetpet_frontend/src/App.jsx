@@ -6,6 +6,8 @@ import ProductPage from "./components/product/ProductPage";
 import { useEffect, useState } from "react";
 import api from "./api";
 import CartPage from "./components/cart/CartPage";
+import CheckoutPage from "./components/checkout/CheckoutPage";
+
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -37,6 +39,7 @@ const App = () => {
             path="cart"
             element={<CartPage setNumberCartItems={setNumberCartItems} />}
           />
+          <Route path ="checkout" element={<CheckoutPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
