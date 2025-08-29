@@ -1,6 +1,11 @@
 import React from "react";
+import { BASE_URL } from "../../api";
 
-const OrderItem = () => {
+const OrderItem = ({ cartitem }) => {
+  if (!cartitem || !cartitem.product) return null;
+
+  const { product } = cartitem;
+
   return (
     <div
       className="d-flex justify-content-between align-items-center mb-3 p-2"
@@ -8,8 +13,8 @@ const OrderItem = () => {
     >
       <div className="d-flex align-items-center">
         <img
-          src=""
-          alt="product"
+          src={`${BASE_URL}${cartitem.product.image}`}
+          alt={product.name || "product"}
           className="img-fluid"
           style={{
             width: "60px",
@@ -19,11 +24,11 @@ const OrderItem = () => {
           }}
         />
         <div className="ms-3">
-          <h6 className="mb-0">Product Name</h6>
-          <small>Quantity: 1</small>
+          <h6 className="mb-0">{product.name}</h6>
+          <small>Quantity: {cartitem.quantity || 1}</small>
         </div>
       </div>
-      <h6>$100.00</h6>
+      <h6>{`$${cartitem.product.price}`}</h6>
     </div>
   );
 };

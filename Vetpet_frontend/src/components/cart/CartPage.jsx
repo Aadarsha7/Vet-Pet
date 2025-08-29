@@ -1,39 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import CartItem from "./CartItem";
-import CartSummary from "./Cartsummary"; // fixed import case
-import api from "../../api";
+import CartSummary from "./Cartsummary";
 import { Link } from "react-router-dom";
 import Spinner from "../ui/Spinner";
+import useCartData from "../../hooks/useCartData";
 
 const CartPage = ({ setNumberCartItems }) => {
-  const cart_code = localStorage.getItem("cart_code");
-  const [cartItem, setCartItem] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0.0);
-  const [loading, setLoading] = useState(false);
-  const tax = 4.0;
+  const { cartitem, setCartItems, cartTotal, setCartTotal, loading, tax } = useCartData();
 
-  useEffect(() => {
-    setLoading(true);
-    api
-      .get(`get_cart?cart_code=${cart_code}`)
-      .then((res) => {
-        console.log(res.data);
-        setCartItem(res.data.items);
-        setCartTotal(res.data.sum_total);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setLoading(false);
-      });
-  }, [cart_code]);
+  if (loading) return <Spinner loading={loading} />;
 
-  if (loading) {
-    return <Spinner loading={loading} />;
-  }
-  
-
-  if (cartItem.length < 1) {
+  if (cartitem.length < 1) {
     return (
       <div className="container my-5 py-5 text-center">
         <h4>Your cart is empty 🛒</h4>
@@ -46,21 +23,18 @@ const CartPage = ({ setNumberCartItems }) => {
   }
 
   return (
-    <div
-      className="container my-3 py-3"
-      style={{ height: "80vh", overflowY: "auto" }}
-    >
+    <div className="container my-3 py-3" style={{ height: "80vh", overflowY: "auto" }}>
       <h5 className="mb-4">Shopping Cart</h5>
       <div className="row">
         <div className="col-md-8">
-          {cartItem.map((Item) => (
+          {cartitem.map((item) => (
             <CartItem
-              key={Item.id}
-              item={Item}
+              key={item.id}
+              item={item}
               setCartTotal={setCartTotal}
-              cartitems={cartItem} // make sure CartItem.jsx uses 'cartitems'
+              cartitems={cartitem} // lowercase everywhere
               setNumberCartItems={setNumberCartItems}
-              setCartItems={setCartItem}
+              setCartItems={setCartItems}
             />
           ))}
         </div>

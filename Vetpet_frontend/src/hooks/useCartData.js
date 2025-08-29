@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import api from "../api"; // ✅ fix the path as needed
+import api from "../api";
 
 function useCartData() {
   const cart_code = localStorage.getItem("cart_code");
-  const [cartItems, setCartItems] = useState([]);
+  const [cartitem, setCartItems] = useState([]); // lowercase cartitem
   const [cartTotal, setCartTotal] = useState(0.0);
   const [loading, setLoading] = useState(false);
   const tax = 4.0;
@@ -13,7 +13,6 @@ function useCartData() {
     api
       .get(`get_cart?cart_code=${cart_code}`)
       .then((res) => {
-        console.log(res.data);
         setCartItems(res.data.items);
         setCartTotal(res.data.sum_total);
         setLoading(false);
@@ -24,7 +23,7 @@ function useCartData() {
       });
   }, [cart_code]);
 
-  return { cartitems, setCartItems, cartTotal, setCartTotal, loading, tax };
+  return { cartitem, setCartItems, cartTotal, setCartTotal, loading, tax };
 }
 
 export default useCartData;
