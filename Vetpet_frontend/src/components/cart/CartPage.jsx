@@ -29,9 +29,9 @@ const CartPage = ({ setNumberCartItems }) => {
   }, [cart_code]);
 
   if (loading) {
-    return  <spinner Loading ={loading} />
-    
+    return <Spinner loading={loading} />;
   }
+  
 
   if (cartItem.length < 1) {
     return (
