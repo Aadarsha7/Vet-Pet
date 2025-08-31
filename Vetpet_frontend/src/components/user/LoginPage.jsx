@@ -4,7 +4,7 @@ import "./LoginPage.css";
 export const LoginPage = () => {
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">
-      <div className="login-container my-5 items-center">
+      <div className="login-container items-center">
         <div className="login-card shadow-lg">
           <h2 className="login-title">Welcome Back</h2>
           <p className="login-subtitle">Please login to your account</p>
