@@ -3,11 +3,12 @@ import MainLayout from "./layout/MainLayout";
 import HomePage from "./components/home/HomePage";
 import NotFoundPage from "./components/ui/NotFoundPage";
 import ProductPage from "./components/product/ProductPage";
+import LoginPage from "./components/user/LoginPage";
 import { useEffect, useState } from "react";
 import api from "./api";
 import CartPage from "./components/cart/CartPage";
 import CheckoutPage from "./components/checkout/CheckoutPage";
-
+import ProtectedRoute from "./components/ui/ProtectedRoute";
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -39,7 +40,16 @@ const App = () => {
             path="cart"
             element={<CartPage setNumberCartItems={setNumberCartItems} />}
           />
-          <Route path ="checkout" element={<CheckoutPage />} />
+          <Route
+            path="checkout"
+            element={
+              <ProtectedRoute>
+                <CheckoutPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route path="login" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
