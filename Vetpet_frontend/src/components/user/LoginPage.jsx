@@ -1,20 +1,41 @@
-import React from "react";
+import { useState } from "react";
 import "./LoginPage.css";
+import api from "../../api";
 
 export const LoginPage = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const userInfo = { username, password };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    api
+      .post("token/", userInfo)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }
+
   return (
     <div className="d-flex justify-content-center align-items-center min-vh-100">
       <div className="login-container my-5 items-center">
         <div className="login-card shadow-lg">
           <h2 className="login-title">Welcome Back</h2>
           <p className="login-subtitle">Please login to your account</p>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
                 Username
               </label>
               <input
                 type="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 className="form-control"
                 id="email"
                 placeholder="Enter your username"
@@ -27,6 +48,8 @@ export const LoginPage = () => {
               </label>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="form-control"
                 id="password"
                 placeholder="Enter your password"
