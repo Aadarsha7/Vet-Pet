@@ -3,63 +3,78 @@ import { toast } from "react-toastify";
 
 import api, { BASE_URL } from "../../api";
 
-const CartItem = ({ item, setCartTotal, cartitems,setCartItems, setNumberCartItems }) => {
+const CartItem = ({
+  item,
+  setCartTotal,
+  cartitems,
+  setCartItems,
+  setNumberCartItems,
+}) => {
   const [quantity, setQuantity] = useState(item.quantity);
-  const [loading, setloading]= useState(false)
+  const [loading, setloading] = useState(false);
   const itemData = { quantity: quantity, item_id: item.id };
-  const itemID ={item_id:item.id}
+  const itemID = { item_id: item.id };
 
+  function deleteCartitem() {
+    const confirmDelete = window.confirm("Do you want to delete this cartitem");
 
-  function deleteCartitem(){
-    const confirmDelete = window.confirm("Do you want to delete this cartitem")
+    if (confirmDelete) {
+      api
+        .post("delete_cartitem/", itemID)
+        .then((res) => {
+          console.log(res.data);
+          toast.success("cartitem deleted sucessfully", {
+            autoClose: 3000,
+            pauseOnHover: false,
+          });
+          setCartItems(cartitems.filter((cartitem) => cartitem.id != item.id));
 
-    if (confirmDelete){
-      api.post("delete_cartitem/",itemID)
-      .then(res => {
-        console.log(res.data)
-        toast.success("cartitem deleted sucessfully")
-        setCartItems(cartitems.filter(cartitem => cartitem.id != item.id))
+          setCartTotal(
+            cartitems.filter((cartitem) => cartitem.id != item.id)
+          ).reduce((acc, curr) => acc + curr.total, 0);
 
-        setCartTotal(cartitems.filter((cartitem)=>cartitem.id != item.id))
-        .reduce((acc,curr)=> acc + curr.total, 0)
-        
+          setNumberCartItems(
+            cartitems.filter((cartitem) => cartitem.id != item.id)
+          ).reduce((acc, curr) => acc + curr.quantity, 0);
+        })
 
-        setNumberCartItems(cartitems.filter((cartitem)=> cartitem.id != item.id))
-        .reduce((acc,curr) => acc+ curr.quantity, 0)
-
-      })
-
-      .catch(err =>{
-        console.log(err.message)
-      })
-
+        .catch((err) => {
+          console.log(err.message);
+          toast.error("Failed to delete product");
+        });
     }
   }
 
   function updateCartItem() {
-    setloading(true)
-    api.patch("update_quantity/", itemData)
+    setloading(true);
+    api
+      .patch("update_quantity/", itemData)
       .then((res) => {
-        console.log(res.data)
-        setloading(false)
-        toast.success("CartItem updated sucessfully")
-        setCartTotal(cartitems.map((cartitem)=>cartitem.id === item.id? res.data.data: cartitem))
-        .reduce((acc,curr)=> acc + curr.total, 0)
-        
+        console.log(res.data);
+        setloading(false);
+        toast.success("CartItem updated sucessfully", {
+          autoClose: 1500,
+          pauseOnHover: false,
+        });
 
-        setNumberCartItems(cartitems.map((cartitem)=> cartitem.id === item.id? res.data.data : cartitem))
-        .reduce((acc,curr) => acc+ curr.quantity, 0)
+        const updatedCartItems = cartitems.map((cartitem) =>
+          cartitem.id === item.id ? res.data.data : cartitem
+        );
 
-
-
+        setCartTotal(
+          updatedCartItems.reduce((acc, curr) => acc + curr.total, 0)
+        );
+        setNumberCartItems(
+          updatedCartItems.reduce((acc, curr) => acc + curr.quantity, 0)
+        );
+        setCartItems(updatedCartItems);
       })
       .catch((err) => {
         console.log(err.message);
-        setloading(false)
-
+        setloading(false);
+        toast.error("Failed to update cart item");
       });
   }
-
   return (
     <div className="col-md-12">
       {/* Cart Items */}
@@ -87,7 +102,7 @@ const CartItem = ({ item, setCartTotal, cartitems,setCartItems, setNumberCartIte
             type="number"
             min={1}
             className="form-control me-3"
-            defaultValue={quantity}
+            value={quantity}
             onChange={(e) => {
               const value = Math.max(1, e.target.value);
               setQuantity(value);
@@ -97,11 +112,15 @@ const CartItem = ({ item, setCartTotal, cartitems,setCartItems, setNumberCartIte
           <button
             className="btn btn-sm mx-2"
             onClick={updateCartItem}
-            style={{ backgroundColor: "#4b3bcb", color: "white" }} disabled={loading}>
-              {loading ? "Updating" : "update"}
-              </button>            
-         
-          <button className="btn btn-danger btn-sm" onClick={deleteCartitem}>Remove</button>
+            style={{ backgroundColor: "#4b3bcb", color: "white" }}
+            disabled={loading || parseInt(quantity) === item.quantity}
+          >
+            {loading ? "Updating" : "Update"}
+          </button>
+
+          <button className="btn btn-danger btn-sm" onClick={deleteCartitem}>
+            Remove
+          </button>
         </div>
       </div>
     </div>
