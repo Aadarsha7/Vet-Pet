@@ -9,6 +9,9 @@ import api from "./api";
 import CartPage from "./components/cart/CartPage";
 import CheckoutPage from "./components/checkout/CheckoutPage";
 import ProtectedRoute from "./components/ui/ProtectedRoute";
+import { AuthoProvider } from "./context/AuthContext";
+import UserProfilePage from "./components/user/UserProfilePage";
+import OrderHistoryFullPage from "./components/user/OrderHistoryFullPage";
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -27,33 +30,40 @@ const App = () => {
   );
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<MainLayout numCartItems={numCartItems} />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="products/:slug"
-            element={<ProductPage setNumberCartItems={setNumberCartItems} />}
-          />
+    <AuthoProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout numCartItems={numCartItems} />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="products/:slug"
+              element={<ProductPage setNumberCartItems={setNumberCartItems} />}
+            />
 
-          <Route
-            path="cart"
-            element={<CartPage setNumberCartItems={setNumberCartItems} />}
-          />
-          <Route
-            path="checkout"
-            element={
-              <ProtectedRoute>
-                <CheckoutPage />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="cart"
+              element={<CartPage setNumberCartItems={setNumberCartItems} />}
+            />
+            <Route
+              path="checkout"
+              element={
+                <ProtectedRoute>
+                  <CheckoutPage />
+                </ProtectedRoute>
+              }
+            />
 
-          <Route path="login" element={<LoginPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="profile" element={<UserProfilePage />} />
+            <Route
+              path="/profile/order-history"
+              element={<OrderHistoryFullPage />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthoProvider>
   );
 };
 
