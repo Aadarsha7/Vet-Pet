@@ -155,3 +155,5 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60)
 }
+
+ESEWA_SECRET_KEY='8gBm/:&EnhH.1/q'

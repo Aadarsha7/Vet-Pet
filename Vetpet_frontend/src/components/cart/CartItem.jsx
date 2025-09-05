@@ -23,21 +23,29 @@ const CartItem = ({
         .post("delete_cartitem/", itemID)
         .then((res) => {
           console.log(res.data);
-          toast.success("cartitem deleted sucessfully", {
+          toast.success("cartitem deleted successfully", {
             autoClose: 3000,
             pauseOnHover: false,
           });
-          setCartItems(cartitems.filter((cartitem) => cartitem.id != item.id));
 
-          setCartTotal(
-            cartitems.filter((cartitem) => cartitem.id != item.id)
-          ).reduce((acc, curr) => acc + curr.total, 0);
+          const filteredItems = cartitems.filter(
+            (cartitem) => cartitem.id !== item.id
+          );
 
-          setNumberCartItems(
-            cartitems.filter((cartitem) => cartitem.id != item.id)
-          ).reduce((acc, curr) => acc + curr.quantity, 0);
+          setCartItems(filteredItems);
+
+          const total = filteredItems.reduce(
+            (acc, curr) => acc + curr.total,
+            0
+          );
+          setCartTotal(total);
+
+          const number = filteredItems.reduce(
+            (acc, curr) => acc + curr.quantity,
+            0
+          );
+          setNumberCartItems(number);
         })
-
         .catch((err) => {
           console.log(err.message);
           toast.error("Failed to delete product");

@@ -1,22 +1,41 @@
-.paypalButton, 
-.flutterwaveButton { 
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.flutterwaveButton {
-  background-color: #f89500;
+.esewaButton {
+  background-color: #ff7f0e;
   border: none;
   color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.paypalButton:hover, 
-.flutterwaveButton:hover {
-  opacity: 0.9;
+.esewaButton:hover {
+  background-color: #ff9a00;
+  transform: translateY(-2px);
+}
+
+.bankButton {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bankButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .card {
-  border-radius: 10px;
-  box-shadow:0 4px 8px rgba(0,0,0,0.1);
-  
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
