@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { BASE_URL } from "../../api";
 
 const HomeCard = ({ product }) => {
-  // console.log("Product:", product);
+  console.log("Product:", product);
 
   return (
     <div className={`col-md-3 ${styles.col}`}>

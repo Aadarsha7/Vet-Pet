@@ -12,6 +12,7 @@ import ProtectedRoute from "./components/ui/ProtectedRoute";
 import { AuthoProvider } from "./context/AuthContext";
 import UserProfilePage from "./components/user/UserProfilePage";
 import OrderHistoryFullPage from "./components/user/OrderHistoryFullPage";
+import PaymentStatusPage from "./payment/PaymentStatus";
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -59,6 +60,7 @@ const App = () => {
               path="/profile/order-history"
               element={<OrderHistoryFullPage />}
             />
+            <Route path="payment-status" element={<PaymentStatusPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

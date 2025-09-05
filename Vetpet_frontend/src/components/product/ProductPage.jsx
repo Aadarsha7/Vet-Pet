@@ -61,8 +61,11 @@ const ProductPage = ({ setNumberCartItems }) => {
       api
         .get(`product_detail/${slug}`)
         .then((res) => {
-          setProduct(res.data);
+          console.log(res.data);
+          setProduct(res.data.product);
           setSimilarProducts(res.data.similar_products);
+
+          console.log("Related products:", res.data.similar_products);
           setLoading(false);
         })
         .catch((err) => {
