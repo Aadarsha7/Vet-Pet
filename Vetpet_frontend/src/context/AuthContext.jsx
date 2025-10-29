@@ -21,8 +21,15 @@ export function AuthoProvider({ children }) {
   };
 
   function get_username() {
+    const token = localStorage.getItem("access"); // get JWT token
+    if (!token) return; // if no token, don’t make request
+
     api
-      .get("get_username")
+      .get("get_username", {
+        headers: {
+          Authorization: `Bearer ${token}`, // include token
+        },
+      })
       .then((res) => {
         setUsername(res.data.username);
       })
