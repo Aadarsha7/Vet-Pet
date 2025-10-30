@@ -1,6 +1,6 @@
 import { FaShoppingCart } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
 
 import NavBarLink from "./NavBarLink";
@@ -21,8 +21,8 @@ const NavBar = ({ numCartItems }) => {
           <div>Home</div>
           <div>About</div>
           <div>Shop</div>
-          <div>Appointment</div>
-          <div>Conatct Us</div>
+          <NavLink to='appointment'>Appointment</NavLink>
+          <NavLink to='Contact-us'>Conatct Us</NavLink>
         </div>
 
         <button

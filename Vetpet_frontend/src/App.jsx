@@ -13,6 +13,8 @@ import { AuthoProvider } from "./context/AuthContext";
 import UserProfilePage from "./components/user/UserProfilePage";
 import OrderHistoryFullPage from "./components/user/OrderHistoryFullPage";
 import PaymentStatusPage from "./payment/PaymentStatus";
+import AppointmentForm from "./components/appointments/AppointmentForm";
+import ContactUs from "./components/pages/ContactUs";
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -60,6 +62,11 @@ const App = () => {
               path="/profile/order-history"
               element={<OrderHistoryFullPage />}
             />
+            <Route path="appointment" element={<AppointmentForm/>}/>
+            <Route path="Contact-us" element={<ContactUs/>}/>
+
+
+
             <Route path="payment-status" element={<PaymentStatusPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
