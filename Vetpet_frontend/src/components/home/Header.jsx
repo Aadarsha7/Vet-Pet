@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,12 +10,12 @@ const Header = () => {
           <p className="lead fw-normal text-white-75 mb-4">
             Explore top products and trusted care for your furry friends.
           </p>
-          <a
-            href="#shop"
+          <NavLink
+            to="shop"
             className="btn btn-light btn-lg rounded-pill px-4 py-2"
           >
             Shop Now
-          </a>
+          </NavLink>
         </div>
       </div>
     </header>

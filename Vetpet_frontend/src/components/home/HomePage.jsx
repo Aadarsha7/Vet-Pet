@@ -39,9 +39,9 @@ const HomePage = () => {
   return (
     <>
       <Header />
-      {error && <Error error={error} />}
+      {/* {error && <Error error={error} />}
       {loading && <PlaceHolderContainer />}
-      {!loading && !error && <CardContainer products={products} />}
+      {!loading && !error && <CardContainer products={products} />} */}
 
       {/* Changed section */}
 
@@ -325,9 +325,9 @@ const HomePage = () => {
             </li>
 
             <div className="ms-4 ">
-              <button className="btn btn-primary bg-info">
+              <a className="btn btn-primary bg-info" href="/appointment">
                 Get Your Appointment
-              </button>
+              </a>
             </div>
           </ul>
 

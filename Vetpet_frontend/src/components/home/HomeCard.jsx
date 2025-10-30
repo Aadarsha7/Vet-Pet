@@ -15,6 +15,7 @@ const HomeCard = ({ product }) => {
               className={styles.cardImgTop}
               alt="Product Image"
             />
+            <p>yoooo</p>
           </div>
           <div className={styles.cardBody}>
             <h5 className={`${styles.cardTitle} mb-1`}>{product.name}</h5>

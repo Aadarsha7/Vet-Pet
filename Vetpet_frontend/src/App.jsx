@@ -15,6 +15,7 @@ import OrderHistoryFullPage from "./components/user/OrderHistoryFullPage";
 import PaymentStatusPage from "./payment/PaymentStatus";
 import AppointmentForm from "./components/appointments/AppointmentForm";
 import ContactUs from "./components/pages/ContactUs";
+import Shop from "./components/pages/Shop";
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -64,6 +65,7 @@ const App = () => {
             />
             <Route path="appointment" element={<AppointmentForm/>}/>
             <Route path="Contact-us" element={<ContactUs/>}/>
+            <Route path="shop" element={<Shop/>}/>
 
 
 

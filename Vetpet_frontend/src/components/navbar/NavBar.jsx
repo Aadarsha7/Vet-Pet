@@ -18,12 +18,13 @@ const NavBar = ({ numCartItems }) => {
           className="d-flex justify-content-center align-items-center gap-5 h-100 cursor-pointer "
           style={{ marginLeft: "20rem" }}
         >
-          <div>Home</div>
-          <div>About</div>
-          <div>Shop</div>
+          <NavLink to='/'>Home</NavLink>
+          <NavLink>About</NavLink>
+          <NavLink to='shop'>Shop</NavLink>
           <NavLink to='appointment'>Appointment</NavLink>
           <NavLink to='Contact-us'>Conatct Us</NavLink>
-        </div>
+        </div> 
+        
 
         <button
           className="navbar-toggler"
