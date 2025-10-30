@@ -6,6 +6,7 @@ import PlaceHolderContainer from "../ui/PlaceHolderContainer";
 import Error from "../ui/Error";
 import { randomValue } from "../../GenerateCardCode";
 // import whyVetpet from "../ui/whyVetpet";
+import image from "../../assets/whyvetpet.png";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -48,7 +49,7 @@ const HomePage = () => {
         <div className="row align-items-center g-4">
           <div className="col-md-5 text-center mt-4 mt-md-0">
             <img
-              src="#"
+              src={image}
               alt="VetPet"
               className="img-fluid rounded shadow-sm"
               style={{ maxHeight: "400px", objectFit: "cover" }}
@@ -57,7 +58,7 @@ const HomePage = () => {
 
           <div className="col-md-7">
             <h1 className="fw-bold mb-4">
-              Why Choose{" "}
+              Why Choose
               <span className="bg-info px-3 py-1 rounded-pill">Vetpet</span>
             </h1>
 
@@ -81,7 +82,7 @@ const HomePage = () => {
               </li>
 
               <li className="mb-3">
-                <h5 className="fw-bold">2. To buy the pets</h5>
+                <h5 className="fw-bold">2. To take Appointments</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
                   nostrum quisquam, aut impedit exercitationem vitae? Ipsam modi
@@ -265,6 +266,74 @@ const HomePage = () => {
                 veritatis maxime, aliquid mollitia! Doloribus.
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* 3rd section */}
+      <div className=" p-4 rounded-3 my-5">
+        {/* Header Section */}
+        <div className="text-center " style={{ marginBottom: "5rem" }}>
+          <div className="h2 mb-3">Discover the Process</div>
+          <div>
+            Experience a seamless consultation journey - VetPet makes it
+            effortless and efficient.
+          </div>
+        </div>
+        <br />
+        <br />
+
+        {/* Steps Section */}
+        <div
+          className="d-flex justify-content-center align-items-start flex-wrap"
+          style={{ gap: "10rem" }}
+        >
+          {/* Steps List */}
+          <ul className="list-unstyled">
+            <li className="mb-3">
+              <span className="bg-primary text-white rounded-circle px-2 py-1 me-2">
+                1
+              </span>
+              <span className="fs-5 fw-semibold">
+                Create Your Pet's Profile
+              </span>
+              <div className="ms-4 mt-1">
+                Provide essential details about your pet to receive <br />
+                personalized services.
+              </div>
+            </li>
+
+            <li className="mb-3">
+              <span className="bg-primary text-white rounded-circle px-2 py-1 me-2">
+                2
+              </span>
+              <span className="fs-5 fw-semibold">Buy Your Pets</span>
+              <div className="ms-4 mt-1">
+                Provide healthy and best breed pets.
+              </div>
+            </li>
+
+            <li style={{ marginBottom: "3rem" }}>
+              <span className="bg-primary text-white rounded-circle px-2 py-1 me-2">
+                3
+              </span>
+              <span className="fs-5 fw-semibold">Schedule an Appointment</span>
+              <div className="ms-4 mt-1 mb-2">
+                Book a convenient time for either an in-person visit <br />
+                or an online consultation.
+              </div>
+            </li>
+
+            <div className="ms-4 ">
+              <button className="btn btn-primary bg-info">
+                Get Your Appointment
+              </button>
+            </div>
+          </ul>
+
+          {/* Image Section */}
+          <div>
+            <img src={image} alt="Pet" className="img-fluid rounded" />
           </div>
         </div>
       </div>

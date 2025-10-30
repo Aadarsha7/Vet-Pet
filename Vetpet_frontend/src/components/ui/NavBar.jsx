@@ -14,6 +14,17 @@ const NavBar = ({ numCartItems }) => {
           VETPET
         </Link>
 
+        <div
+          className="d-flex justify-content-center align-items-center gap-5 h-100 cursor-pointer "
+          style={{ marginLeft: "20rem" }}
+        >
+          <div>Home</div>
+          <div>About</div>
+          <div>Shop</div>
+          <div>Appointment</div>
+          <div>Conatct Us</div>
+        </div>
+
         <button
           className="navbar-toggler"
           type="button"
