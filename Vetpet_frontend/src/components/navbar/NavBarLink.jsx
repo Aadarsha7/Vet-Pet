@@ -14,7 +14,7 @@ const NavBarLink = () => {
   }
 
   return (
-    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
       {isAuthenticated ? (
         <>
           <li className="nav-item">

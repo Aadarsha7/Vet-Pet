@@ -15,16 +15,55 @@ const NavBar = ({ numCartItems }) => {
         </Link>
 
         <div
-          className="d-flex justify-content-center align-items-center gap-5 h-100 cursor-pointer "
+          className="d-none d-lg-flex justify-content-center align-items-center gap-3 p-2 "
           style={{ marginLeft: "20rem" }}
         >
-          <NavLink to='/'>Home</NavLink>
-          <NavLink>About</NavLink>
-          <NavLink to='shop'>Shop</NavLink>
-          <NavLink to='appointment'>Appointment</NavLink>
-          <NavLink to='Contact-us'>Conatct Us</NavLink>
-        </div> 
-        
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              "nav-link px-2 fw-semibold fs-5" +
+              (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              "nav-link px-2 fw-semibold fs-5" +
+              (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/shop"
+            className={({ isActive }) =>
+              "nav-link px-2 fw-semibold fs-5" +
+              (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
+            }
+          >
+            Pet shop
+          </NavLink>
+          <NavLink
+            to="/appointment"
+            className={({ isActive }) =>
+              "nav-link px-2 fw-semibold fs-5" +
+              (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
+            }
+          >
+            Appointment
+          </NavLink>
+          <NavLink
+            to="/contact-us"
+            className={({ isActive }) =>
+              "nav-link px-2 fw-semibold fs-5" +
+              (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
+            }
+          >
+            Contact Us
+          </NavLink>
+        </div>
 
         <button
           className="navbar-toggler"

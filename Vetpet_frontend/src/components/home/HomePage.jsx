@@ -7,6 +7,7 @@ import Error from "../ui/Error";
 import { randomValue } from "../../GenerateCardCode";
 // import whyVetpet from "../ui/whyVetpet";
 import image from "../../assets/whyvetpet.png";
+import dogImage from "../../assets/dog.png";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -39,20 +40,24 @@ const HomePage = () => {
   return (
     <>
       <Header />
+
       {/* {error && <Error error={error} />}
       {loading && <PlaceHolderContainer />}
       {!loading && !error && <CardContainer products={products} />} */}
 
       {/* Changed section */}
 
-      <div className="container my-5 bg-light">
-        <div className="row align-items-center g-4">
+      <div className="container mb-5 " style={{ marginTop: "8rem" }}>
+        <div className="row justify-content-center g-4">
           <div className="col-md-5 text-center mt-4 mt-md-0">
             <img
-              src={image}
+              src={dogImage}
               alt="VetPet"
-              className="img-fluid rounded shadow-sm"
-              style={{ maxHeight: "400px", objectFit: "cover" }}
+              className="img-fluid rounded shadow-sm img-fluid border-0"
+              style={{
+                maxHeight: "600px",
+                objectFit: "cover",
+              }}
             />
           </div>
 
