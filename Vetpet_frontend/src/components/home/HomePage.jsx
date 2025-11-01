@@ -8,6 +8,7 @@ import { randomValue } from "../../GenerateCardCode";
 // import whyVetpet from "../ui/whyVetpet";
 import image from "../../assets/whyvetpet.png";
 import dogImage from "../../assets/dog.png";
+import MobileNav from "../navbar/MobileNav";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -39,6 +40,7 @@ const HomePage = () => {
 
   return (
     <>
+      {/* <MobileNav /> */}
       <Header />
 
       {/* {error && <Error error={error} />}
@@ -48,7 +50,7 @@ const HomePage = () => {
       {/* Changed section */}
 
       <div className="container mb-5 " style={{ marginTop: "8rem" }}>
-        <div className="row justify-content-center g-4">
+        <div className="row justify-content-center g-5">
           <div className="col-md-5 text-center mt-4 mt-md-0">
             <img
               src={dogImage}
@@ -61,13 +63,13 @@ const HomePage = () => {
             />
           </div>
 
-          <div className="col-md-7">
+          <div className="col-md-7 ">
             <h1 className="fw-bold mb-4">
               Why Choose
-              <span className="bg-info px-3 py-1 rounded-pill">Vetpet</span>
+              <span> Vetpet</span>
             </h1>
 
-            <p className="fs-5">
+            <p style={{ fontFamily: "Poppins, sans-serif ", fontSize: "17px" }}>
               VetPet Central connects pet owners with top-tier veterinarians
               nationwide. With our extensive Vet Clinic Directory, Access to
               Specialist, Appointment Scheduling, and Virtual Vet Consultations;
@@ -75,9 +77,9 @@ const HomePage = () => {
               Care.
             </p>
 
-            <ul className="list-unstyled mt-4">
+            <ul className="list-styled mt-4 ">
               <li className="mb-3">
-                <h5 className="fw-bold">1. To buy the pets</h5>
+                <h5 className="fw-bold">To buy the pets</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
                   nostrum quisquam, aut impedit exercitationem vitae? Ipsam modi
@@ -87,16 +89,22 @@ const HomePage = () => {
               </li>
 
               <li className="mb-3">
-                <h5 className="fw-bold">2. To take Appointments</h5>
+                <h5 className="fw-bold">To take Appointments</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
                   nostrum quisquam, aut impedit exercitationem vitae? Ipsam modi
                   molestias officia fuga eos quo? Nobis, dicta ipsam dolorum
                   voluptas et voluptatem nostrum.
                 </p>
+                <a
+                  className="btn btn-info btn-lg rounded-pill px-4 py-2 text-white mt-3"
+                  href="/About us"
+                >
+                  Learn More
+                </a>
               </li>
 
-              <li>
+              {/* <li>
                 <h5 className="fw-bold">3. To buy the pets</h5>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
@@ -104,7 +112,7 @@ const HomePage = () => {
                   molestias officia fuga eos quo? Nobis, dicta ipsam dolorum
                   voluptas et voluptatem nostrum.
                 </p>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -122,10 +130,10 @@ const HomePage = () => {
         </div>
 
         {/* Card Section */}
-        <div className="d-flex flex-wrap justify-content-center align-items-stretch gap-4 px-3">
+        <div className="d-flex flex-wrap justify-content-evenly align-items-stretch px-3 ">
           {/* Card 1 */}
           <div
-            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
+            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column mb-3"
             style={{
               width: "20rem",
               cursor: "pointer",
@@ -151,7 +159,7 @@ const HomePage = () => {
 
           {/* Card 2 */}
           <div
-            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
+            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column mb-3"
             style={{
               width: "20rem",
               cursor: "pointer",
@@ -177,6 +185,32 @@ const HomePage = () => {
 
           {/* Card 3 */}
           <div
+            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column "
+            style={{
+              width: "20rem",
+              cursor: "pointer",
+              transition: "all 0.3s ease-in-out",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-6px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
+          >
+            <div className="card-body text-center d-flex flex-column flex-grow-1">
+              <h5 className="card-title fw-semibold mb-3">
+                Take Appointments for pets
+              </h5>
+              <p className="card-text flex-grow-1 text-start">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+                nam, officiis expedita debitis voluptates ad harum dicta
+                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
+                veritatis maxime, aliquid mollitia! Doloribus.
+              </p>
+            </div>
+          </div>
+          {/* <div
             className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
             style={{
               width: "20rem",
@@ -199,8 +233,8 @@ const HomePage = () => {
                 veritatis maxime, aliquid mollitia! Doloribus.
               </p>
             </div>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
             style={{
               width: "20rem",
@@ -223,8 +257,8 @@ const HomePage = () => {
                 veritatis maxime, aliquid mollitia! Doloribus.
               </p>
             </div>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
             style={{
               width: "20rem",
@@ -247,31 +281,7 @@ const HomePage = () => {
                 veritatis maxime, aliquid mollitia! Doloribus.
               </p>
             </div>
-          </div>
-          <div
-            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
-            style={{
-              width: "20rem",
-              cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "translateY(-6px)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = "translateY(0)")
-            }
-          >
-            <div className="card-body text-center d-flex flex-column flex-grow-1">
-              <h5 className="card-title fw-semibold mb-3">Pet Care Service</h5>
-              <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
-              </p>
-            </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -296,7 +306,7 @@ const HomePage = () => {
           {/* Steps List */}
           <ul className="list-unstyled">
             <li className="mb-3">
-              <span className="bg-primary text-white rounded-circle px-2 py-1 me-2">
+              <span className="bg-info text-white rounded-circle px-2 py-1 me-2">
                 1
               </span>
               <span className="fs-5 fw-semibold">
@@ -309,7 +319,7 @@ const HomePage = () => {
             </li>
 
             <li className="mb-3">
-              <span className="bg-primary text-white rounded-circle px-2 py-1 me-2">
+              <span className="bg-info text-white rounded-circle px-2 py-1 me-2">
                 2
               </span>
               <span className="fs-5 fw-semibold">Buy Your Pets</span>
@@ -319,7 +329,7 @@ const HomePage = () => {
             </li>
 
             <li style={{ marginBottom: "3rem" }}>
-              <span className="bg-primary text-white rounded-circle px-2 py-1 me-2">
+              <span className="bg-info text-white rounded-circle px-2 py-1 me-2">
                 3
               </span>
               <span className="fs-5 fw-semibold">Schedule an Appointment</span>
@@ -330,7 +340,10 @@ const HomePage = () => {
             </li>
 
             <div className="ms-4 ">
-              <a className="btn btn-primary bg-info" href="/appointment">
+              <a
+                className="btn btn-info btn-lg rounded-pill px-4 py-2 text-white"
+                href="/appointment"
+              >
                 Get Your Appointment
               </a>
             </div>

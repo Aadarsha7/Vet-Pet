@@ -2,9 +2,20 @@ import { FaShoppingCart } from "react-icons/fa";
 
 import { Link, NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
-
+import { useState } from "react";
 import NavBarLink from "./NavBarLink";
+import MobileNav from "./MobileNav";
+
 const NavBar = ({ numCartItems }) => {
+  // this is the mobile menu function
+
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Toggle menu open/close
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+  // here it ends
   return (
     <nav
       className={`navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3 ${styles.stickyNavbar}`}
@@ -43,7 +54,7 @@ const NavBar = ({ numCartItems }) => {
               (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
             }
           >
-            Pet shop
+            Shop
           </NavLink>
           <NavLink
             to="/appointment"
@@ -65,17 +76,37 @@ const NavBar = ({ numCartItems }) => {
           </NavLink>
         </div>
 
+        {/* mobile menu */}
+
+        {/* it maintain hide and show */}
+        <div
+          id="mobileMenu"
+          className={`d-lg-none ${
+            menuOpen ? "d-block" : "d-none"
+          }  position-absolute w-100`}
+          style={{
+            top: "100%",
+            left: 0,
+            zindex: 999,
+          }}
+        >
+          <MobileNav onLinkClick={() => setMenuOpen(false)} />
+        </div>
+
         <button
           className="navbar-toggler"
           type="button"
+          onClick={toggleMenu}
           data-bs-toggle="collapse"
           data-bs-target="#navbarContent"
           aria-controls="navbarContent"
-          aria-expanded="false"
+          aria-expanded={menuOpen}
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
+        {/* mobile-menu ends */}
 
         <div className="collapse navbar-collapse" id="navbarContent">
           <NavBarLink />
