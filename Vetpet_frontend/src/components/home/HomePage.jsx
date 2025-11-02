@@ -43,10 +43,6 @@ const HomePage = () => {
       {/* <MobileNav /> */}
       <Header />
 
-      {/* {error && <Error error={error} />}
-      {loading && <PlaceHolderContainer />}
-      {!loading && !error && <CardContainer products={products} />} */}
-
       {/* Changed section */}
 
       <div className="container mb-5 " style={{ marginTop: "8rem" }}>
@@ -70,49 +66,40 @@ const HomePage = () => {
             </h1>
 
             <p style={{ fontFamily: "Poppins, sans-serif ", fontSize: "17px" }}>
-              VetPet Central connects pet owners with top-tier veterinarians
-              nationwide. With our extensive Vet Clinic Directory, Access to
-              Specialist, Appointment Scheduling, and Virtual Vet Consultations;
-              VetPet Central can provide you and your pet with Flexible & Expert
-              Care.
+              VetPet connects pet owners with top-tier veterinarians nationwide.
+              With our extensive Vet Clinic Directory, Access to Specialist,
+              Appointment Scheduling, and Buy pets online. VetPet can provide
+              you and your pet with Flexible & Expert Care.
             </p>
 
             <ul className="list-styled mt-4 ">
               <li className="mb-3">
-                <h5 className="fw-bold">To buy the pets</h5>
+                <h5 className="fw-bold">To buy pets</h5>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                  nostrum quisquam, aut impedit exercitationem vitae? Ipsam modi
-                  molestias officia fuga eos quo? Nobis, dicta ipsam dolorum
-                  voluptas et voluptatem nostrum.
+                  VetPet is the best place to buy pets because it provides a
+                  safe and trusted platform for pet lovers.Every pet listed on
+                  VetPet is healthy, and well cared for, ensuring you find a
+                  happy and genuine companion.Choosing VetPet means choosing
+                  safety, trust, and happiness for both you and your pet.
                 </p>
               </li>
 
               <li className="mb-3">
                 <h5 className="fw-bold">To take Appointments</h5>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                  nostrum quisquam, aut impedit exercitationem vitae? Ipsam modi
-                  molestias officia fuga eos quo? Nobis, dicta ipsam dolorum
-                  voluptas et voluptatem nostrum.
+                  VetPet is the easiest and most reliable way to book veterinary
+                  appointments online. It helps pet owners connect directly with
+                  qualified and experienced vets without the hassle of waiting
+                  in long lines or making repeated phone calls. Through VetPet,
+                  you can schedule appointments at your preferred time.
                 </p>
                 <a
                   className="btn btn-info btn-lg rounded-pill px-4 py-2 text-white mt-3"
-                  href="/About us"
+                  href="/about"
                 >
                   Learn More
                 </a>
               </li>
-
-              {/* <li>
-                <h5 className="fw-bold">3. To buy the pets</h5>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                  nostrum quisquam, aut impedit exercitationem vitae? Ipsam modi
-                  molestias officia fuga eos quo? Nobis, dicta ipsam dolorum
-                  voluptas et voluptatem nostrum.
-                </p>
-              </li> */}
             </ul>
           </div>
         </div>
@@ -137,7 +124,7 @@ const HomePage = () => {
             style={{
               width: "20rem",
               cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
+              transition: "all 0.1s ease-in-out",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "translateY(-6px)")
@@ -149,10 +136,12 @@ const HomePage = () => {
             <div className="card-body text-center d-flex flex-column flex-grow-1">
               <h5 className="card-title fw-semibold mb-3">Buy Your Pet</h5>
               <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
+                We have a trusted and caring platform where you can easily buy
+                healthy and verified pets. At VetPet, we provide a wide range of
+                pets-from playful puppies to adorable kittens-all checked and
+                approved by professionals. We make the buying process simple,
+                safe, and transparent so you can find your perfect companion
+                without any worries.
               </p>
             </div>
           </div>
@@ -163,7 +152,7 @@ const HomePage = () => {
             style={{
               width: "20rem",
               cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
+              transition: "all 0.1s ease-in-out",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "translateY(-6px)")
@@ -175,10 +164,12 @@ const HomePage = () => {
             <div className="card-body text-center d-flex flex-column flex-grow-1">
               <h5 className="card-title fw-semibold mb-3">Pet Grooming</h5>
               <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
+                We have professional grooming services to keep your pets clean,
+                healthy, and happy. At VetPet, we provide expert care that
+                includes bathing, trimming, nail clipping, and styling-all done
+                in a safe and comfortable environment. We use pet-friendly
+                products and modern tools to ensure your furry friend looks and
+                feels their best.
               </p>
             </div>
           </div>
@@ -189,7 +180,7 @@ const HomePage = () => {
             style={{
               width: "20rem",
               cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
+              transition: "all 0.1s ease-in-out",
             }}
             onMouseEnter={(e) =>
               (e.currentTarget.style.transform = "translateY(-6px)")
@@ -203,85 +194,14 @@ const HomePage = () => {
                 Take Appointments for pets
               </h5>
               <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
+                We have an easy and reliable appointment system that helps you
+                connect with professional vets quickly. At VetPet, we provide a
+                simple way to book veterinary appointments online without
+                waiting or making phone calls. You can choose your preferred
+                doctor, date, and time with just a few clicks.
               </p>
             </div>
           </div>
-          {/* <div
-            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
-            style={{
-              width: "20rem",
-              cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "translateY(-6px)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = "translateY(0)")
-            }
-          >
-            <div className="card-body text-center d-flex flex-column flex-grow-1">
-              <h5 className="card-title fw-semibold mb-3">Pet Care Service</h5>
-              <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
-              </p>
-            </div>
-          </div> */}
-          {/* <div
-            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
-            style={{
-              width: "20rem",
-              cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "translateY(-6px)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = "translateY(0)")
-            }
-          >
-            <div className="card-body text-center d-flex flex-column flex-grow-1">
-              <h5 className="card-title fw-semibold mb-3">Pet Care Service</h5>
-              <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
-              </p>
-            </div>
-          </div> */}
-          {/* <div
-            className="card bg-light border rounded-4 p-3 shadow-sm d-flex flex-column"
-            style={{
-              width: "20rem",
-              cursor: "pointer",
-              transition: "all 0.3s ease-in-out",
-            }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "translateY(-6px)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.transform = "translateY(0)")
-            }
-          >
-            <div className="card-body text-center d-flex flex-column flex-grow-1">
-              <h5 className="card-title fw-semibold mb-3">Pet Care Service</h5>
-              <p className="card-text flex-grow-1 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                nam, officiis expedita debitis voluptates ad harum dicta
-                voluptas tenetur ut. Tempore dolorem deserunt facilis dolore
-                veritatis maxime, aliquid mollitia! Doloribus.
-              </p>
-            </div>
-          </div> */}
         </div>
       </div>
 
@@ -309,9 +229,7 @@ const HomePage = () => {
               <span className="bg-info text-white rounded-circle px-2 py-1 me-2">
                 1
               </span>
-              <span className="fs-5 fw-semibold">
-                Create Your Pet's Profile
-              </span>
+              <span className="fs-5 fw-semibold">Create Your Profile</span>
               <div className="ms-4 mt-1">
                 Provide essential details about your pet to receive <br />
                 personalized services.

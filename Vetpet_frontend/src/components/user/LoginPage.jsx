@@ -14,27 +14,50 @@ export const LoginPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    phone: "",
+    confirmPassword: "",
+  });
+
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
-  const userInfo = { username, password };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match!");
+      setLoading(false);
+      return;
+    }
+
+    const userInfo = {
+      username: formData.username,
+      password: formData.password,
+      phone: formData.phone,
+    };
 
     api
       .post("token/", userInfo)
       .then((res) => {
-        console.log(res.data.access);
         localStorage.setItem("access", res.data.access);
         localStorage.setItem("refresh", res.data.refresh);
-        setUsername("");
-        setPassword("");
-        setLoading(false);
+
+        setFormData({
+          username: "",
+          password: "",
+          phone: "",
+          confirmPassword: "",
+        });
+
         setIsAuthenticated(true);
         toast.success("Login successful!");
         get_username();
@@ -44,14 +67,13 @@ export const LoginPage = () => {
       })
       .catch((err) => {
         console.log(err.message);
-        setError(err.message);
         toast.error("Login failed. Please check your credentials.");
       })
       .finally(() => setLoading(false));
-  }
+  };
 
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-100">
+    <div className="d-flex justify-content-center align-items-center mt-5 ">
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -60,35 +82,56 @@ export const LoginPage = () => {
 
       <div className="login-container items-center">
         <div className="login-card shadow-lg">
-          <h2 className="login-title text-center">Welcome Back</h2>
-          <p className="login-subtitle text-center">
-            Please login to your account
+          <h2 className="login-title text-center">Join VetPet</h2>
+          <p className="login-subtitle text-center mb-3">
+            Please sign in to your account
           </p>
+
           <form onSubmit={handleSubmit}>
+            {/* Username */}
             <div className="mb-3">
               <label htmlFor="username" className="form-label">
                 Username
               </label>
               <input
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
                 className="form-control"
-                id="email"
                 placeholder="Enter your username"
                 required
               />
             </div>
+
+            {/* Phone Number */}
+            <div className="mb-3">
+              <label htmlFor="phone" className="form-label">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="form-control"
+                placeholder="Enter your phone number"
+                required
+                pattern="[0-9]{10}"
+              />
+            </div>
+
+            {/* Password */}
             <div className="mb-3 password-input-container">
               <label htmlFor="password" className="form-label">
                 Password
               </label>
               <input
                 type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
                 className="form-control"
-                id="password"
                 placeholder="Enter your password"
                 required
               />
@@ -100,22 +143,45 @@ export const LoginPage = () => {
               </span>
             </div>
 
+            {/* Confirm Password */}
+            <div className="mb-3 password-input-container">
+              <label htmlFor="confirmPassword" className="form-label">
+                Confirm Password
+              </label>
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="form-control"
+                placeholder="Confirm your password"
+                required
+              />
+              <span
+                className="showPasswordToggle"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? (
+                  <AiOutlineEyeInvisible />
+                ) : (
+                  <AiOutlineEye />
+                )}
+              </span>
+            </div>
+
+            <div className="login-footer mt-1 ">
+              <p>
+                <a href="#">Forgot Password</a>
+              </p>
+            </div>
             <button
               type="submit"
-              className="btn-primary w-100"
+              className="btn btn-info w-100 py-2 rounded-pill"
               disabled={loading}
             >
-              {loading ? "Logging in..." : "Login"}
+              {loading ? "Logging in..." : "Sign in "}
             </button>
           </form>
-          <div className="login-footer text-center">
-            <p>
-              <a href="#">Forgot Password</a>
-            </p>
-            <p>
-              Don't have an account? <a href="#">Sign up</a>
-            </p>
-          </div>
         </div>
       </div>
     </div>

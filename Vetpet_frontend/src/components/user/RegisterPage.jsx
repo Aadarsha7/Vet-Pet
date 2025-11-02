@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import image from "./assets/Vetpet.jpg";
 
 function Register() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -26,6 +29,8 @@ function Register() {
     }
 
     setMessage("✅ Registration successful!");
+
+    // Reset form
     setFormData({
       username: "",
       email: "",
@@ -33,6 +38,11 @@ function Register() {
       password: "",
       confirmPassword: "",
     });
+
+    // Redirect to homepage after 1.5 seconds
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
   };
 
   return (
@@ -86,7 +96,6 @@ function Register() {
         className="d-flex justify-content-center align-items-center vh-100"
         // style={{
         //   backgroundImage: `url(${image})`,
-
         //   backgroundSize: "cover",
         //   backgroundPosition: "center",
         //   backgroundRepeat: "no-repeat",
@@ -97,7 +106,7 @@ function Register() {
           style={{
             width: "380px",
             borderRadius: "16px",
-            backgroundColor: "rgba(255,255,255,0.95)", // semi-transparent so background shows
+            backgroundColor: "rgba(255,255,255,0.95)", // semi-transparent
           }}
         >
           <h4 className="text-center mb-2 fw-bold text-primary">
@@ -200,7 +209,7 @@ function Register() {
             className="text-center mt-3 text-muted mb-0"
             style={{ fontSize: "0.9rem" }}
           >
-            Already have an account?
+            Already have an account?{" "}
             <a
               href="/login"
               className="text-primary fw-semibold text-decoration-none"

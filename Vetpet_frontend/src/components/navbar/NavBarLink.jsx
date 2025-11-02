@@ -8,6 +8,7 @@ const NavBarLink = () => {
     useContext(AuthContext);
 
   function logout() {
+    alert("Do you really wants to Log Out");
     localStorage.removeItem("access");
     setIsAuthenticated(false);
     navigate("/");
@@ -45,30 +46,28 @@ const NavBarLink = () => {
         </>
       ) : (
         <>
+          {/* Show only Login button */}
           <li className="nav-item">
             <NavLink
               to="/login"
               className={({ isActive }) =>
                 isActive
-                  ? "nav-link active fw-semibold"
-                  : "nav-link fw-semibold"
+                  ? "btn btn-info btn-sm rounded-pill text-white fw-semibold px-3 py-2"
+                  : "btn bg-black text-white btn-sm rounded-pill text-white fw-semibold px-3 py-2"
               }
-              end
-            >
-              Login
-            </NavLink>
-          </li>
-
-          <li className="nav-item">
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link active fw-semibold"
-                  : "nav-link fw-semibold"
+              style={{
+                transition: "0.3s",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.className =
+                  "btn btn-info btn-sm rounded-pill text-white fw-semibold px-3 py-2")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.className =
+                  "btn btn-sm rounded-pill text-white fw-semibold px-3 py-2 bg-black")
               }
             >
-              Register
+              Sign in ➜
             </NavLink>
           </li>
         </>

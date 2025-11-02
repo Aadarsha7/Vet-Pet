@@ -38,27 +38,29 @@ const UserInfo = ({ userInfo }) => {
               {/* Left side of info */}
               <div className="col-md-6">
                 <p>
-                  <strong>Full Name:</strong> {userInfo.first_name}{" "}
-                  {userInfo.last_name}
+                  <strong>
+                    Full Name: {userInfo.first_name}
+                    {userInfo.last_name}
+                  </strong>
                 </p>
                 <p>
-                  <strong>Email:</strong> {userInfo.email}
+                  <strong>Email: {userInfo.email}</strong>
                 </p>
                 <p>
-                  <strong>Phone:</strong> {userInfo.phone}
+                  <strong>Phone: {userInfo.phone}</strong>
                 </p>
               </div>
 
               {/* Right side of info */}
               <div className="col-md-6">
                 <p>
-                  <strong>City:</strong> {userInfo.address}
+                  <strong>City: Bharatpur</strong>
                 </p>
                 <p>
-                  <strong>Country:</strong> {userInfo.country}
+                  <strong>Country: Nepal</strong>
                 </p>
                 <p>
-                  <strong>Member Since:</strong> January 2023
+                  <strong>Member Since: January 2025</strong>
                 </p>
               </div>
             </div>
