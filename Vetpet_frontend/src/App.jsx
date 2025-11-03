@@ -17,7 +17,10 @@ import AppointmentForm from "./components/appointments/AppointmentForm";
 import ContactUs from "./components/pages/ContactUs";
 import Shop from "./components/pages/Shop";
 import Register from "./components/user/RegisterPage";
-import About from "./components/pages/About";
+import DoctorPage from "./components/Doctor/DoctorPage";
+import DoctorDetailPage from "./components/Doctor/DoctorDetailPage";
+import MyAppointment from "./components/appointments/MyAppointment";
+import About from './components/pages/About'
 
 const App = () => {
   const [numCartItems, setNumberCartItems] = useState(0);
@@ -60,18 +63,34 @@ const App = () => {
             />
 
             <Route path="login" element={<LoginPage />} />
+
+            
+
             <Route path="register" element={<Register />} />
+
             <Route path="profile" element={<UserProfilePage />} />
+
             <Route
               path="/profile/order-history"
               element={<OrderHistoryFullPage />}
             />
+
             <Route path="appointment" element={<AppointmentForm />} />
+
             <Route path="Contact-us" element={<ContactUs />} />
+
             <Route path="shop" element={<Shop />} />
-            <Route path="about" element={<About />} />
+             <Route path='about' element={<About/>} />
+            
+            <Route path="doctors" element={<DoctorPage />} />
+             <Route path="/doctors/:id" element={<DoctorDetailPage/>} />
+
+
+            
+             <Route path='/my-appointments' element={<MyAppointment/>}/>
 
             <Route path="payment-status" element={<PaymentStatusPage />} />
+
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

@@ -260,7 +260,7 @@ const HomePage = () => {
             <div className="ms-4 ">
               <a
                 className="btn btn-info btn-lg rounded-pill px-4 py-2 text-white"
-                href="/appointment"
+                href="/doctors"
               >
                 Get Your Appointment
               </a>

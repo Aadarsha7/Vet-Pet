@@ -11,16 +11,16 @@ const Footer = () => {
       <div className="container text-center">
         {/* Quick Links Section */}
         <div className="mb-2">
-          <a href="#" className="text-white text-decoration-none mx-2">
+          <a href="/" className="text-white text-decoration-none mx-2">
             Home
           </a>
-          <a href="#" className="text-white text-decoration-none mx-2">
+          <a href="about" className="text-white text-decoration-none mx-2">
             About
           </a>
-          <a href="#" className="text-white text-decoration-none mx-2">
+          <a href="shop" className="text-white text-decoration-none mx-2">
             Shop
           </a>
-          <a href="#" className="text-white text-decoration-none mx-2">
+          <a href="contact-us" className="text-white text-decoration-none mx-2">
             Contact
           </a>
         </div>

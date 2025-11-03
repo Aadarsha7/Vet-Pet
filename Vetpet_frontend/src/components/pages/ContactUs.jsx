@@ -4,7 +4,7 @@ function ContactUs() {
   return (
     <div
       className="d-flex justify-content-center mt-5 "
-      style={{ marginBottom: "9vh" }}
+      style={{ marginBottom: "14vh" }}
     >
       <div
         className="card shadow p-4"

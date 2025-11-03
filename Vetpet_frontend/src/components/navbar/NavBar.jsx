@@ -39,6 +39,16 @@ const NavBar = ({ numCartItems }) => {
             Home
           </NavLink>
           <NavLink
+            to="/doctors"
+            className={({ isActive }) =>
+              "nav-link px-2 fw-semibold fs-5" +
+              (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
+            }
+          >
+            Doctors
+          </NavLink>
+
+          <NavLink
             to="/about"
             className={({ isActive }) =>
               "nav-link px-2 fw-semibold fs-5" +
@@ -47,6 +57,7 @@ const NavBar = ({ numCartItems }) => {
           >
             About
           </NavLink>
+          
           <NavLink
             to="/shop"
             className={({ isActive }) =>
@@ -57,7 +68,7 @@ const NavBar = ({ numCartItems }) => {
             Shop
           </NavLink>
           <NavLink
-            to="/appointment"
+            to="/my-appointments"
             className={({ isActive }) =>
               "nav-link px-2 fw-semibold fs-5" +
               (isActive ? " active" : "nav-link px-2 fw-semibold fs-6")
